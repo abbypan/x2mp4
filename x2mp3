@@ -1,0 +1,8 @@
+#!/usr/bin/perl
+
+my ($f) = @ARGV;
+
+my $d = $f;
+$d=~s/\.[^.]+$/.mp3/;
+
+system(qq[ffmpeg -i "$f" -f mp3 "$d"]);

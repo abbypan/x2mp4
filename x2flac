@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+
+my ($src, $dst) = @ARGV;
+if(! $dst){
+    $dst=$src;
+    $dst=~s/\.[^.]+$/.flac/;
+}
+
+if($src=~/\.cue$/){
+    system(qq[shnsplit -f "$src" -t "%n.%t" -o "flac flac -V --best -o %f -" "$dst"]);
+}elsif($src=~/\.ape$/){
+        system(qq[ffmpeg -i "$src" "$dst"]);
+}else{
+    system(qq[flac -V --best -o "$dst" "$src"]);
+}
