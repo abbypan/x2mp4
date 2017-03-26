@@ -13,15 +13,16 @@ x2mp4 [infile] [outfile] 转换单个文件为mp4
 
 # x2flac
 
-x2flac [infile] [outfile]
+x2flac [infile] [outfile] 转换单个音乐文件为flac
 
-x2flac xxx.ape xxx.flac  转换单个音乐文件为flac
+    $ x2flac xxx.ape xxx.flac  
 
-x2flac [cuefile] [audiofile] 
+x2flac [cuefile] [audiofile] 根据cue索引信息拆分[audiofile]音乐文件，按曲目顺序存为多个flac
 
-x2flac xxx.cue xxx.wav  根据xxx.cue索引信息拆分xxx.wav音乐文件，按曲目顺序存为多个flac
+注意cuetags.sh自动打的tag不含year信息
 
-cuetags.sh xxx.cue *.flac 注意这自动打的tag不含year信息
+    $ x2flac xxx.cue xxx.wav
+    $ cuetags.sh xxx.cue *.flac
 
 # flactags 
 
@@ -52,4 +53,3 @@ flactags 将当前所在目录的flac打上tag，带上year信息
 require ffmpeg, shnsplit, flac, cuetools
 
 windows下ffmpeg可以用 http://ffmpeg.zeranoe.com/builds/
-
