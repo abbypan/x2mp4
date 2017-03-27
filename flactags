@@ -13,12 +13,15 @@ my $n = @flac_files;
 for my $flac (@flac_files){
     print $flac, "\n";
     my ($index, $title) = $flac=~m#^(\d+)\.(.+)\.flac$#;
+    if(! defined $index){
+        ($artist, $title) = $flac=~m#^(.+)\.(.+)\.flac$#;
+    }
     system(qq[metaflac --remove-all-tags "$flac"]);
     system(qq[metaflac --set-tag="date=$year" "$flac"]);
     system(qq[metaflac --set-tag="artist=$artist" "$flac"]);
     system(qq[metaflac --set-tag="performer=$artist" "$flac"]);
     system(qq[metaflac --set-tag="album=$album" "$flac"]);
     system(qq[metaflac --set-tag="title=$title" "$flac"]);
-    system(qq[metaflac --set-tag="tracknumber=$index" "$flac"]);
+    system(qq[metaflac --set-tag="tracknumber=$index" "$flac"]) if(defined $index);
     system(qq[metaflac --set-tag="tracktotal=$n" "$flac"]);
 }
