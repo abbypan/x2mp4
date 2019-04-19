@@ -62,4 +62,6 @@ flactags 将当前所在目录的flac打上tag，带上year信息
 
 删除当前目录下的重复音乐文件（同artist，且同title，不考虑album）。
 
+文件格式支持：flac，mp3
+
 $ delete_duplicate_song.pl 
