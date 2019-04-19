@@ -1,5 +1,14 @@
-x2mp3, x2mp4, x2flac, flactags
-==============================
+x2y music video
+===============
+
+# install
+
+windows下ffmpeg可以用 http://ffmpeg.zeranoe.com/builds/
+
+以 debian 环境为例
+
+    $ apt-get install ffmpeg shnsplit flac cuetools perl
+    $ cpan Capture::Tiny 
 
 # x2mp3
 
@@ -48,8 +57,9 @@ flactags 将当前所在目录的flac打上tag，带上year信息
 
     0 directories, 11 files
 
-# install
 
-require ffmpeg, shnsplit, flac, cuetools
+# delete_duplicate_song.pl
 
-windows下ffmpeg可以用 http://ffmpeg.zeranoe.com/builds/
+删除当前目录下的重复音乐文件（同artist，且同title，不考虑album）。
+
+$ delete_duplicate_song.pl 
